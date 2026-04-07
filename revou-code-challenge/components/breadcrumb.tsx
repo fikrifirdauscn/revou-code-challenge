@@ -1,4 +1,4 @@
-import type { Brand, Category, SubCategory } from '@/data/catalog';
+import type { Brand, Category, SubCategory } from "@/data/catalog";
 
 type BreadcrumbProps = {
   selectedCategory?: Category;
@@ -14,28 +14,33 @@ export function Breadcrumb({
   return (
     <nav
       aria-label="breadcrumb"
-      className="product-breadcrumb mb-6 rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200"
+      className="product-breadcrumb mb-6 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm"
     >
-      <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
+      <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
         <li>Home</li>
         <li>/</li>
         <li>Products</li>
+
         {selectedCategory && (
           <>
             <li>/</li>
             <li>{selectedCategory.name}</li>
           </>
         )}
+
         {selectedSubCategory && (
           <>
             <li>/</li>
             <li>{selectedSubCategory.name}</li>
           </>
         )}
+
         {selectedBrand && (
           <>
             <li>/</li>
-            <li className="font-semibold text-slate-900">{selectedBrand.name}</li>
+            <li className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
+              {selectedBrand.name}
+            </li>
           </>
         )}
       </ol>

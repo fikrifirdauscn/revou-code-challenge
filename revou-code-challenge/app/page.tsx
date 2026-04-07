@@ -1,27 +1,28 @@
-import { Breadcrumb } from '@/components/breadcrumb';
-import { FilterPanel } from '@/components/filter-panel';
-import { ProductGrid } from '@/components/product-grid';
+import { Breadcrumb } from "@/components/breadcrumb";
+import { FilterPanel } from "@/components/filter-panel";
+import { ProductGrid } from "@/components/product-grid";
 import {
   filterProducts,
   getBrandsBySubCategory,
   getCatalogData,
   getSubCategoriesByCategory,
-} from '@/lib/catalog';
+} from "@/lib/catalog";
 
 type HomePageProps = {
-  searchParams: {
+  searchParams: Promise<{
     category?: string;
     subcategory?: string;
     brand?: string;
-  };
+  }>;
 };
 
 export default async function HomePage({ searchParams }: HomePageProps) {
   const data = await getCatalogData();
+  const params = await searchParams;
 
-  const selectedCategoryId = searchParams.category;
-  const selectedSubCategoryId = searchParams.subcategory;
-  const selectedBrandId = searchParams.brand;
+  const selectedCategoryId = params.category;
+  const selectedSubCategoryId = params.subcategory;
+  const selectedBrandId = params.brand;
 
   const selectedCategory = data.categories.find((item) => item.id === selectedCategoryId);
 
@@ -30,7 +31,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     : [];
 
   const selectedSubCategory = availableSubCategories.find(
-    (item) => item.id === selectedSubCategoryId,
+    (item) => item.id === selectedSubCategoryId
   );
 
   const availableBrands = selectedSubCategory
@@ -47,20 +48,22 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
   return (
     <main className="min-h-screen bg-slate-50">
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <header className="mb-8">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+      <section className="border-b border-slate-200 bg-gradient-to-b from-indigo-50 via-white to-slate-50">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-indigo-600">
             Code Challenge
           </p>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          <h1 className="mt-3 max-w-3xl text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
             Dynamic Product Catalog
           </h1>
-          <p className="mt-3 max-w-3xl text-slate-600">
-            Cascading dropdown filters with URL-based state persistence, dynamic breadcrumb,
-            and responsive product listing.
+          <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+            Simple ecommerce-style catalog with cascading filters, breadcrumb,
+            and URL-based state persistence.
           </p>
-        </header>
+        </div>
+      </section>
 
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <Breadcrumb
           selectedCategory={selectedCategory}
           selectedSubCategory={selectedSubCategory}
@@ -68,7 +71,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         />
 
         <FilterPanel
-          categories={data.categories}
+          categories={[...data.categories]}
           subCategories={availableSubCategories}
           brands={availableBrands}
           selectedCategory={selectedCategory?.id}
@@ -76,7 +79,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           selectedBrand={selectedBrand?.id}
         />
 
-        <ProductGrid products={products} brands={data.brands} />
+        <ProductGrid products={products} brands={[...data.brands]} />
       </div>
     </main>
   );
