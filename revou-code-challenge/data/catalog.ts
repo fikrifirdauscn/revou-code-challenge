@@ -20,14 +20,14 @@ export const catalogData = {
     { "id": "B8", "subCategoryId": "S4", "name": "Adidas" }
   ],
   "products": [
-    { "id": "P1", "brandId": "B1", "name": "Asus ROG Zephyrus", "price": 25000000 },
-    { "id": "P2", "brandId": "B2", "name": "MacBook Pro M3", "price": 30000000 },
-    { "id": "P3", "brandId": "B3", "name": "Samsung Galaxy S24", "price": 15000000 },
-    { "id": "P4", "brandId": "B4", "name": "Xiaomi 14 Pro", "price": 12000000 },
-    { "id": "P5", "brandId": "B5", "name": "Erigo T-Shirt Black", "price": 150000 },
-    { "id": "P6", "brandId": "B6", "name": "Uniqlo Flannel Shirt", "price": 399000 },
-    { "id": "P7", "brandId": "B7", "name": "Nike Air Force 1", "price": 1500000 },
-    { "id": "P8", "brandId": "B8", "name": "Adidas Ultraboost", "price": 2800000 }
+    { "id": "P1", "brandId": "B1", "name": "Asus ROG Zephyrus", "price": 25000000, "image": "/products/asus-rog.jpg" },
+    { "id": "P2", "brandId": "B2", "name": "MacBook Pro M3", "price": 30000000, "image": "/products/macbook-pro-m3.webp"  },
+    { "id": "P3", "brandId": "B3", "name": "Samsung Galaxy S24", "price": 15000000, "image": "/products/samsung-s24.webp"  },
+    { "id": "P4", "brandId": "B4", "name": "Xiaomi 14 Pro", "price": 12000000, "image": "/products/xiaomi-14-pro.webp" },
+    { "id": "P5", "brandId": "B5", "name": "Erigo T-Shirt Black", "price": 150000, "image": "/products/erigo-tshirt-black.webp" },
+    { "id": "P6", "brandId": "B6", "name": "Uniqlo Flannel Shirt", "price": 399000, "image": "/products/uniqlo-flannel-tshirt.avif" },
+    { "id": "P7", "brandId": "B7", "name": "Nike Air Force 1", "price": 1500000, "image": "/products/nike-air-force1.avif" },
+    { "id": "P8", "brandId": "B8", "name": "Adidas Ultraboost", "price": 2800000, "image": "/products/adidas-ultraboost.avif" }
   ]
  } as const;
 
