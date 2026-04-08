@@ -221,5 +221,5 @@ This version is built with Next.js based on project preference. The original cha
 
 ## Author
 
-Built as part of a code challenge submission.
+© Fikri Firdaus Cakra Negara
 
